@@ -1,7 +1,9 @@
 import axios from "axios";
+import moment from "moment";
+import { toast } from "sonner";
 
 const request = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
   timeout: 5000,
 });
 
@@ -9,6 +11,7 @@ const request = axios.create({
 request.interceptors.request.use(
   (config) => {
     // 在发送请求之前做些什么
+
     return config;
   },
   (error) => {
@@ -19,11 +22,18 @@ request.interceptors.request.use(
 
 request.interceptors.response.use(
   (response) => {
-    // 对响应数据做点什么
-    return response;
+    // 解析并返回数据。
+    const res = response.data;
+    if (res.code !== 200) {
+      toast.error(res.message);
+    }
+    return res;
   },
   (error) => {
-    // 对响应错误做点什么
+    // 报错并弹窗提示
+    toast.error(error.message);
     return Promise.reject(error);
   }
 );
+
+export default request;

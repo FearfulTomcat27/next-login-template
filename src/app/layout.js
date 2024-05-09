@@ -1,6 +1,9 @@
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner";
+import { ProgressBar } from "@/components";
+import "@/middleware";
 
 export const metadata = {
   title: "Next-admin",
@@ -14,14 +17,11 @@ const fontSans = FontSans({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
+    <html lang='en'>
+      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+        <ProgressBar />
         {children}
+        <Toaster richColors position='top-center' />
       </body>
     </html>
   );
