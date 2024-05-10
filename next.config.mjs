@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["lf9-static.semi.design"],
+    domains: ["lf9-static.semi.design", "ui.shadcn.com"],
   },
 };
 

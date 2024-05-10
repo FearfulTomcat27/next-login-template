@@ -4,6 +4,9 @@ import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { ProgressBar } from "@/components";
 import "@/middleware";
+import dynamic from "next/dynamic";
+
+const ThemeProvider = dynamic(() => import("@/components/theme-provider"), { ssr: false });
 
 export const metadata = {
   title: "Next-admin",
@@ -19,9 +22,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
-        <ProgressBar />
-        {children}
-        <Toaster richColors position='top-center' />
+        <ThemeProvider attribute='class' defaultTheme='light' enableSystem>
+          <Toaster richColors position='top-center' />
+          <ProgressBar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
