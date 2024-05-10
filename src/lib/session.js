@@ -1,9 +1,9 @@
-import "server-only";
+"use server";
 import { cookies } from "next/headers";
 
 const TokenKey = "login-template-token";
 
-export function setToken(token) {
+export async function setToken(token) {
   cookies().set(TokenKey, token, {
     httpOnly: true,
     secure: true,
@@ -12,10 +12,10 @@ export function setToken(token) {
   });
 }
 
-export function getToken() {
+export async function getToken() {
   return cookies().get(TokenKey);
 }
 
-export function removeToken() {
+export async function removeToken() {
   cookies().remove(TokenKey);
 }

@@ -1,12 +1,7 @@
-"use client";
-import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const Home = () => {
-  return (
-    <>
-      <Link href="/login">login</Link>
-    </>
-  );
+  redirect("/dashboard");
 };
 
 export default Home;
