@@ -1,11 +1,11 @@
 import { Sidebar } from "@/components";
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div className='min-h-screen relative flex overflow-hidden'>
       {/* sidebar部分 */}
       <Sidebar />
       {/* 内容部分 */}
-      <div>
+      <div className='relative ml-72'>
         {/* header部分 */}
 
         {/* main部分 */}
