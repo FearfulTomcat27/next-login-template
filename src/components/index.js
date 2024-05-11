@@ -5,3 +5,4 @@ export { default as SideBarItem } from "./sidebar-item";
 export { default as Header } from "./header";
 export { default as ThemeProvider } from "./theme-provider";
 export { default as DarkModeSwitcher } from "./dark-mode-switcher/dark-mode-switcher";
+export { default as SearchInput } from "./search-input/search-input";

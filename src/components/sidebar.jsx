@@ -1,4 +1,3 @@
-"use client";
 import { useGlobalStore } from "@/store";
 import { AppWindow, LayoutDashboard, Users, FolderClosed, File, CalendarCheck, PieChart, Settings, SquareArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,10 +7,11 @@ const Sidebar = () => {
   const { isCollapsed, setIsCollapsed } = useGlobalStore();
   return (
     <>
-      <div className='fixed h-full font-bold'>
+      <div className='fixed h-full font-bold border-r '>
         <aside
-          className={clsx("w-72 bg-background shadow h-full px-6 duration-200", {
+          className={clsx("bg-background h-full duration-200 ", {
             "px-0 w-16": isCollapsed,
+            "px-6 w-72": !isCollapsed,
           })}
         >
           <div className='flex flex-col justify-center'>
@@ -45,18 +45,12 @@ const Sidebar = () => {
             </div>
             {/* 底部伸缩按钮 */}
             <div
-              className={clsx("absolute bottom-2 right-6", {
+              className={clsx("absolute bottom-2", {
                 "right-1": isCollapsed,
+                "right-6": !isCollapsed,
               })}
             >
-              <Button
-                onClick={() => {
-                  setIsCollapsed(!isCollapsed);
-                }}
-                className={clsx("bg-foreground hover:bg-foreground/80", {
-                  "": isCollapsed,
-                })}
-              >
+              <Button onClick={setIsCollapsed} className={"bg-foreground hover:bg-foreground/80"}>
                 <SquareArrowLeft
                   className={clsx("duration-300", {
                     "rotate-180": isCollapsed,

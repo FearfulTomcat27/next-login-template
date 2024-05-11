@@ -10,8 +10,9 @@ const Layout = ({ children }) => {
       <Sidebar />
       {/* 内容部分 */}
       <div
-        className={clsx("ml-72 h-[1200px] w-full min-h-screen", {
+        className={clsx("h-[1200px] w-full min-h-screen", {
           "ml-16": isCollapsed,
+          "ml-72": !isCollapsed,
         })}
       >
         {/* header部分 */}

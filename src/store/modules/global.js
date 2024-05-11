@@ -7,7 +7,7 @@ const useGlobalStore = create(
       theme: "light",
       isCollapsed: false,
       setTheme: (theme) => set({ theme }),
-      setIsCollapsed: (isCollapsed) => set({ isCollapsed }),
+      setIsCollapsed: () => set((state) => ({ isCollapsed: !state.isCollapsed })),
     }),
     {
       name: "global",
